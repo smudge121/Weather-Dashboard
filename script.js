@@ -6,6 +6,7 @@ var getWeather = 'http://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon=
 var inputButton = document.querySelector('#inputButton');
 var inputText = document.querySelector('input');
 var searchHistory = document.querySelector('#searchHistory');
+var mainContainer = document.querySelector('#main');
 
 var cities = JSON.parse(localStorage.getItem('cities')) || [];
 
@@ -21,7 +22,6 @@ inputButton.addEventListener('click', function(event){
         return response.json();
     }).then(function(data){
         console.log(data);
-
         cities.push(data[0].name);
         AddToHistory(data[0].name);
         localStorage.setItem('cities',JSON.stringify(cities));
@@ -37,6 +37,8 @@ function GetWeather(url)
         return response.json();
     }).then(function(data){
         console.log(data);
+        
+        GenerateToday(data.city.name, data.list);
     });
 }
 
@@ -51,14 +53,33 @@ function AddToHistory(cityName){
         fetch(getGeo.replace('CITY', cityName)).then(function(response){
             return response.json();
         }).then(function(data){
-            console.log(data);
-    
+
             var loc = getWeather.replace('{lat}', data[0].lat);
             GetWeather(loc.replace('{lon}', data[0].lon));
         });
     });
 
     searchHistory.appendChild(hist);
+}
 
+function GenerateToday(cityName, weather)
+{
+    mainContainer.innerHTML = '';
+
+    var nameText = document.createElement('h2');
+    nameText.textContent = cityName;
+    mainContainer.appendChild(nameText);
+
+    var tempText = document.createElement('p');
+    tempText.textContent = 'Temperature: ' + weather[0].main.temp + ' °F';
+    mainContainer.appendChild(tempText);
+
+    var windText = document.createElement('p');
+    windText.textContent = 'Wind: ' + weather[0].wind.speed + ' mph';
+    mainContainer.appendChild(windText);
+
+    var humText = document.createElement('p');
+    humText.textContent = 'Humidity: ' + weather[0].main.humidity + '%';
+    mainContainer.appendChild(humText);
 }
 
