@@ -1,7 +1,7 @@
 var APIkey = '9d63bca39552839c3c79e05256a07216';
-var getGeo = 'http://api.openweathermap.org/geo/1.0/direct?q=CITY&limit=5&appid=' + APIkey;
-var getWeather = 'http://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&units=imperial&cnt=48&appid=' + APIkey;
-var iconURL = "http://openweathermap.org/img/w/ICON.png"
+var getGeo = 'https://api.openweathermap.org/geo/1.0/direct?q=CITY&limit=5&appid=' + APIkey;
+var getWeather = 'https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&units=imperial&cnt=48&appid=' + APIkey;
+var iconURL = "https://openweathermap.org/img/w/ICON.png"
 
 
 var inputButton = document.querySelector('#inputButton');
