@@ -12,3 +12,9 @@ Visit the website at this link:
 Type the desired city into the text field and press the submit button.  A 5 day forecast will be generated.  To view the source code of the project, download the files listed.
 
 ![Screenshot of Weather Dashboard](./Screenshot.png)
+
+## Credits
+
+1. WebPage developed by Jaret Ishii
+2. Bootstrap
+3. Api's from: https://openweathermap.org/
