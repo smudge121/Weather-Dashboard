@@ -1,6 +1,7 @@
 var APIkey = '9d63bca39552839c3c79e05256a07216';
 var getGeo = 'http://api.openweathermap.org/geo/1.0/direct?q=CITY&limit=5&appid=' + APIkey;
 var getWeather = 'http://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&units=imperial&cnt=48&appid=' + APIkey;
+var iconURL = "http://openweathermap.org/img/w/ICON.png"
 
 
 var inputButton = document.querySelector('#inputButton');
@@ -68,10 +69,15 @@ function GenerateToday(cityName, weather)
 {
     mainContainer.innerHTML = '';
 
+    var icon = document.createElement('img');
+    icon.setAttribute('src', iconURL.replace('ICON',weather[0].weather[0].icon));
+
     var nameText = document.createElement('h2');
-    nameText.textContent = cityName + " (" + dayjs().format('DD/MM/YYYY') + ")";
+    nameText.innerHTML += cityName + " (" + dayjs().format('DD/MM/YYYY') + ")" 
+        + "<img src =" + iconURL.replace('ICON',weather[0].weather[0].icon) + ">";
     nameText.setAttribute('class', 'm-2');
     mainContainer.appendChild(nameText);
+
 
     var tempText = document.createElement('p');
     tempText.textContent = 'Temperature: ' + weather[0].main.temp + ' °F';
@@ -113,9 +119,13 @@ function WriteDateCard(weatherObj){
     card.setAttribute('class', 'card col m-2');
 
     var dateText = document.createElement('h4');
-    dateText.textContent = weatherObj.dt_txt.substring(0,9);
+    dateText.textContent = weatherObj.dt_txt.substring(0,10);
     dateText.setAttribute('class', 'm-2');
     card.appendChild(dateText);
+
+    var imgHolder = document.createElement('p');
+    imgHolder.innerHTML = "<img src=" + iconURL.replace('ICON',weatherObj.weather[0].icon) + ">";
+    card.appendChild(imgHolder);
 
     var tempText = document.createElement('p');
     tempText.textContent = 'Temp: ' + weatherObj.main.temp + ' °F';
