@@ -21,8 +21,8 @@
 <main class = "row">
     <div class = "col-3 .bg-info">
         <h2>Search for a City: </h2>
-        <input type="text" placeholder="City Name">
-        <button id="inputButton" type="button" class="btn btn-info">Submit</button>
+        <input type="text" placeholder="City Name" class="col-12 m-2">
+        <button id="inputButton" type="button" class="btn btn-info col-12 m-2">Submit</button>
         <hr>
         <div id="searchHistory">
             <!--Generate buttons here-->
@@ -36,8 +36,8 @@
             <p>Humidity: <span></span></p> -->
         </div>
 
-        <div>
-            <div class="card" style="width: 18rem;">
+        <div id="cards" class="row">
+            <!-- <div class="card" style="width: 18rem;">
                 <div class="card-body">
                   <h5 class="card-title">Card title</h5>
                   <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
@@ -47,7 +47,7 @@
                     <li>Humidity</li>
                     </ul>
                 </div>
-              </div>
+              </div> -->
         </div>
         
         
@@ -55,7 +55,10 @@
     </div>
 
 </main>
-    
+
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+    integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
+    crossorigin="anonymous"></script>
 <script src="./script.js"></script>
 </body>
 </html>
