@@ -23,7 +23,6 @@ inputButton.addEventListener('click', function(event){
     fetch(getGeo.replace('CITY', inputText.value)).then(function(response){
         return response.json();
     }).then(function(data){
-        console.log(data);
         cities.push(data[0].name);
         AddToHistory(data[0].name);
         localStorage.setItem('cities',JSON.stringify(cities));
@@ -38,7 +37,6 @@ function GetWeather(url, cityName)
     fetch(url).then(function(response){
         return response.json();
     }).then(function(data){
-        console.log(data);
         
         GenerateToday(cityName, data.list);
         GenerateFiveDay(cityName, data.list);
@@ -107,7 +105,6 @@ function GenerateFiveDay(cityName, weatherArray) {
     for (var i = 0; i < weatherArray.length ; i++){
         if (weatherArray[i].dt_txt.substring(11,13) == "12")
         {
-            console.log(weatherArray[i].dt_txt + weatherArray[i].main.temp);
             WriteDateCard(weatherArray[i]);
         }
     }
@@ -145,4 +142,5 @@ function WriteDateCard(weatherObj){
     
     cardContainer.appendChild(card);
 }
+
 
