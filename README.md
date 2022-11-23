@@ -6,7 +6,7 @@ In this project I created a website that will give the user a 5 day weather fore
 
 ## Usage
 
-Visit the website at this link: 
+Visit the website at this link: https://smudge121.github.io/Weather-Dashboard/ 
 
 
 Type the desired city into the text field and press the submit button.  A 5 day forecast will be generated.  To view the source code of the project, download the files listed.
